@@ -1,0 +1,9 @@
+# dsh-quote-annotate 的配置层：插入插件行（跟随 bundle 安装到任意 profile）
+# 修复(2026-10-16)：行 id 必须是包名。dsh-client-modules 按“行 id”索引启动图
+# （graphRows.set(row.id, row)；arrive(row) 里 factories.has(row.id) 决定成败），
+# 而本包 client bundle 用 window.__ModuleLoader__.load({ id: 'dsh-quote-annotate' }) 注册。
+# 原来 id 写成 `quote-annotate`，两边对不上 → 抛
+#   client-modules: could not load "quote-annotate": ... loaded without registering
+- insert:
+    - id: dsh-quote-annotate
+      name: dsh-quote-annotate

@@ -1,0 +1,52 @@
+{
+  "name": "dsh-quote-annotate",
+  "version": "0.2.0",
+  "description": "DSH 会话交互优化：选中对话文字 →【复制】/【批注】→ 多个引用 chip 共存于输入框；点击 chip 精确滚回原文并高亮，悬停显示原文，chip 右上角可删除。已适配 DSH 0.2.0-rc.2。",
+  "keywords": [
+    "dsh",
+    "plugin",
+    "quote",
+    "annotate",
+    "selection",
+    "reference"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/everydayfighting/dsh-quote-annotate.git"
+  },
+  "dependencies": {
+    "react": "^18.2.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": []
+    }
+  },
+  "homepage": "https://github.com/everydayfighting/dsh-quote-annotate#readme",
+  "bugs": {
+    "url": "https://github.com/everydayfighting/dsh-quote-annotate/issues"
+  }
+}
