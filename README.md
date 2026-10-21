@@ -2,7 +2,7 @@
 
 [中文](#功能) | [English](#features)
 
-DeepSeek Harness（DSH）会话交互优化插件：**选中对话中的任意文字 → 一键【复制】或【批注】**，引用以 chip 形式进入输入框，多个引用可共存，发送时展开为结构化引用块，模型精确知道你引用的是哪一段。
+DeepSeek Harness（DSH）会话交互优化插件：**选中对话中的任意文字 → 一键【复制】或【添加到对话】**，引用以 chip 形式进入输入框，多个引用可共存，发送时展开为结构化引用块，模型精确知道你引用的是哪一段。
 
 > 适配 DSH `0.2.0-rc.2`（含桌面端）。纯 Client 插件，无 Host 逻辑。
 
@@ -10,9 +10,9 @@ DeepSeek Harness（DSH）会话交互优化插件：**选中对话中的任意�
 
 ## 功能
 
-- **选中即出操作条**：拖选会话中的文字，选区上方浮出胶囊按钮条：【复制】【批注】。
+- **选中即出操作条**：拖选会话中的文字，选区上方浮出胶囊按钮条：【复制】【添加到对话】。
 - **【复制】**：把选中的原文写入系统剪贴板；气泡随即消失，屏幕顶部弹出「已复制到剪贴板 ✓」。
-- **【批注】**：把该段原文作为引用 chip（`@引用#N`）写进底部输入框，光标自动回到输入框，可直接继续输入追问。
+- **【添加到对话】**：把该段原文作为引用 chip（`@引用#N`）写进底部输入框，光标自动回到输入框，可直接继续输入追问。
 - **多个引用共存**：可以连续批注多段文字，多个 chip 同时保留在输入框中（编号递增、不回收）。
 - **悬停 chip** → 提示框显示「引用#N」标题 + 当时选中的原文。
 - **chip 右上角 ✕** → 精确删除这一条引用，其它 chip 与编号不受影响。
@@ -23,7 +23,7 @@ DeepSeek Harness（DSH）会话交互优化插件：**选中对话中的任意�
 
 **选中即出操作条 | Selection action bar**
 
-![选中文字后出现【复制】【批注】操作条 | Copy / Annotate bar above the selection](docs/screenshot-select.png)
+![选中文字后出现【复制】【添加到对话】操作条 | Copy / Add-to-chat bar above the selection](docs/screenshot-select.png)
 
 **多引用共存 + 悬停原文 | Multiple chips & hover tooltip**
 
@@ -43,10 +43,10 @@ dsh plugin --profile <你的profile> add github:everydayfighting/dsh-quote-annot
 
 ### 方式二：从 tarball 安装
 
-下载 `dsh-quote-annotate-0.2.0.tgz` 后：
+下载 `dsh-quote-annotate-0.2.1.tgz` 后：
 
 ```sh
-dsh plugin --profile <你的profile> add file:D:/path/to/dsh-quote-annotate-0.2.0.tgz
+dsh plugin --profile <你的profile> add file:D:/path/to/dsh-quote-annotate-0.2.1.tgz
 ```
 
 安装后**完全退出并重启 DSH**（静态客户端插件在服务启动时加载）。
@@ -61,7 +61,7 @@ dsh plugin --profile <你的profile> add file:D:/path/to/dsh-quote-annotate-0.2.
 
 ## 与上游 0.1.1 的差异
 
-本仓库相对原作者 `wangwei-wade/dsh-quote-annotate@0.1.1` 的主要修正与增强（均针对 DSH 0.2.0-rc.2 实测）：
+本仓库相对原作者 `wangwei-wade/dsh-quote-annotate@0.1.1` 的主要修正与增强（均针对 DSH 0.2.1-rc.2 实测）：
 
 1. **bundle 行 id 与 client 注册 id 不一致** → 启动图按行 id 索引，模块永远无法到达；已改为 id = 包名。
 2. **client bundle 未声明 `inject: ['slots']`** → `apply` 早于服务就绪被调用后静默返回；已声明依赖。
@@ -81,10 +81,10 @@ dsh plugin --profile <你的profile> add file:D:/path/to/dsh-quote-annotate-0.2.
 
 ### Features
 
-- **Selection action bar**: drag-select any text in the conversation — a compact pill bar with **Copy** and **Annotate** appears above the selection. See the screenshots above.
+- **Selection action bar**: drag-select any text in the conversation — a compact pill bar with **Copy** and **Add to chat** appears above the selection. See the screenshots above.
 - **Copy**: writes the selected text to the system clipboard; the bar dismisses and a "copied ✓" toast appears at the top of the window.
-- **Annotate**: inserts the selected text as a reference chip (`@引用#N`) into the composer and refocuses it, so you can keep typing your follow-up.
-- **Multiple chips coexist**: annotate several passages; chips accumulate in the composer (numbers increase, never recycled).
+- **Add to chat**: inserts the selected text as a reference chip (`@引用#N`) into the composer and refocuses it, so you can keep typing your follow-up.
+- **Multiple chips coexist**: add several passages; chips accumulate in the composer (numbers increase, never recycled).
 - **Hover a chip** → a tooltip shows the label and the exact original text.
 - **✕ at the chip's top-right corner** → removes exactly that reference; other chips and their numbers are untouched.
 - **Click a chip** → smooth-scrolls back to the source and **precisely highlights the selected span** (CSS Highlights API, fades after ~2.4s).
@@ -99,7 +99,7 @@ dsh plugin --profile <your-profile> add github:everydayfighting/dsh-quote-annota
 or from a downloaded tarball:
 
 ```sh
-dsh plugin --profile <your-profile> add file:/path/to/dsh-quote-annotate-0.2.0.tgz
+dsh plugin --profile <your-profile> add file:/path/to/dsh-quote-annotate-0.2.1.tgz
 ```
 
 Fully quit and restart DSH after installing (static client plugins load at service startup).
@@ -112,7 +112,7 @@ Fully quit and restart DSH after installing (static client plugins load at servi
 
 ### Changes vs upstream 0.1.1
 
-Key fixes that make this work on DSH 0.2.0-rc.2 (each verified in a live browser):
+Key fixes that make this work on DSH 0.2.1-rc.2 (each verified in a live browser):
 
 1. Bundle row id now equals the package name (the boot graph indexes factories by row id).
 2. The client bundle declares `inject: ['slots']` so `apply` no longer runs before the slots service exists.
