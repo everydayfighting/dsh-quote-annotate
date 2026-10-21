@@ -1,6 +1,6 @@
 {
   "name": "dsh-quote-annotate",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "DSH 会话交互优化：选中对话文字 →【复制】/【批注】→ 多个引用 chip 共存于输入框；点击 chip 精确滚回原文并高亮，悬停显示原文，chip 右上角可删除。已适配 DSH 0.2.0-rc.2。",
   "keywords": [
     "dsh",
